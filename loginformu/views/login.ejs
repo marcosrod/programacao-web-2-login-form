@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public//stylesheets/style.css" />
+    <title>Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Logar em nova sessão</h1>
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="username">Usuário</label>
+          <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Inserir usuário" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" class="form-control" id="password" aria-describedby="password" name="password" placeholder="Inserir senha" required>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="remember" name="remember" value="true">
+          <label for="remember"> Lembrar usuário</label><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+
+      let cookieValue = readCookie("username");
+      $("#username").val(cookieValue);
+    });
+    
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+      return null;
+    }
+  </script>
+</html>
